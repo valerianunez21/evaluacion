@@ -11,8 +11,8 @@
         <div class="opc">
             <h3>Opciones</h3>
             <a class="nav-button" href="{% url 'inicio' %}">Inicio</a>
-            <a class="nav-button" href="{% url 'registrar' %}">registrar</a>
-            <a class="nav-button" href="{% url 'calificaciones' %}">calificaciones</a>
+            <a class="nav-button" href="{% url 'aprendiz' %}">registrar</a>
+            <a class="nav-button" href="{% url 'materia' %}">calificaciones</a>
         </div>
         <div class="content">
             <h1>Ingrese las notas</h1>
@@ -23,19 +23,18 @@
                         <th>calificacion</th>
 
                     </tr>
-                        {% for Articulo in lista %}
+                        {% for Materia in list %}
                         <tr>
-                            <td>{{ Articulo.articulo_id }}</td>
-                            <td>{{ Articulo.nombre }}</td>
-                            <td>{{ Articulo.precio }}</td>
-                            <td>{{ Articulo.stock }}</td>
+                            <td>{{ Materia.idmateria }}</td>
+                            <td>{{ Materia.materia }}</td>
+                            <td>{{ Materia.calificacion }}</td>
                             <td style="width: 200px;">
-                        <a href="{% url 'modificar' Articulo.articulo_id %}"><button type="submit">Editar</button></a>
-                            <a href="{% url 'eliminar' Articulo.articulo_id %}"><button type="submit">Eliminar</button></a>
+                        <a href="{% url 'modificarmat' Materia.idmateria %}"><button type="submit">Editar</button></a>
+                            <a href="{% url 'eliminarmat' Materia.idmateria %}"><button type="submit">Eliminar</button></a>
                         </td>
                     </tr>
                 {% endfor %}
             </table>
-            <a href="{% url 'formulario' %}"><button type="button">Crear</button></a>
+            <a href="{% url 'formulario2' %}"><button type="submit">Crear</button></a>
         </div>
 {%endblock%}
