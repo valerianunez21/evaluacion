@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}Inicio - institucion{% endblock %}
+
+{% block extra_css %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'apli/css/inicio.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="opc">
+    <h3>Opciones</h3>
+    <a class="nav-button" href="{% url 'inicio' %}">Inicio</a>
+    <a class="nav-button" href="{% url 'registrar' %}">registrar</a>
+    <a class="nav-button" href="{% url 'calificaciones' %}">calificaciones</a>
+</div>
+<div class="content">
+    <h1>institucion</h1>
+    <p>Misión y visión</p>
+</div>
+{% endblock %}

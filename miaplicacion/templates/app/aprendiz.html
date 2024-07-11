@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block title %}aprendiz{% endblock %}
+
+{% block extra_css %}
+{% load static  %}
+    <link rel="stylesheet" href="{% static 'apli/css/aprendiz.css' %}">
+    {% endblock %}
+
+{% block content %}
+        <div class="opc">
+            <h3>Opciones</h3>
+            <a class="nav-button" href="{% url 'inicio' %}">Inicio</a>
+            <a class="nav-button" href="{% url 'registrar' %}">registrar</a>
+            <a class="nav-button" href="{% url 'calificaciones' %}">calificaciones</a>
+        </div>
+        <div class="content">
+            <h1>registrar aprendices</h1>
+            <table>
+                    <tr>
+                        <th>id</th>
+                        <th>Nombre</th>
+                        <th>apellido</th>
+                        <th>grado</th>
+                    </tr>
+                        {% for Aprendiz in lista %}
+                        <tr>
+                            <td>{{ Aprendiz.idaprendiz }}</td>
+                            <td>{{ Aprendiz.nombre }}</td>
+                            <td>{{ Aprendiz.apellido }}</td>
+                            <td>{{ Aprendiz.grado }}</td>
+                            <td style="width: 200px;">
+                        <a href="{% url 'modificar' Aprendiz.idaprendiz %}"><button type="submit">Editar</button></a>
+                            <a href="{% url 'eliminar' Aprendiz.idaprendiz %}"><button type="submit">Eliminar</button></a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </table>
+            <a href="{% url 'formulario' %}"><button type="button">Crear</button></a>
+        </div>
+{%endblock%}

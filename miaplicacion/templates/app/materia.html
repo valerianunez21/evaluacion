@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block title %}materia{% endblock %}
+
+{% block extra_css %}
+{% load static  %}
+    <link rel="stylesheet" href="{% static 'aplicacion/css/articulos.css' %}">
+    {% endblock %}
+
+{% block content %}
+        <div class="opc">
+            <h3>Opciones</h3>
+            <a class="nav-button" href="{% url 'inicio' %}">Inicio</a>
+            <a class="nav-button" href="{% url 'registrar' %}">registrar</a>
+            <a class="nav-button" href="{% url 'calificaciones' %}">calificaciones</a>
+        </div>
+        <div class="content">
+            <h1>Ingrese las notas</h1>
+            <table>
+                    <tr>
+                        <th>id</th>
+                        <th>materia</th>
+                        <th>calificacion</th>
+
+                    </tr>
+                        {% for Articulo in lista %}
+                        <tr>
+                            <td>{{ Articulo.articulo_id }}</td>
+                            <td>{{ Articulo.nombre }}</td>
+                            <td>{{ Articulo.precio }}</td>
+                            <td>{{ Articulo.stock }}</td>
+                            <td style="width: 200px;">
+                        <a href="{% url 'modificar' Articulo.articulo_id %}"><button type="submit">Editar</button></a>
+                            <a href="{% url 'eliminar' Articulo.articulo_id %}"><button type="submit">Eliminar</button></a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </table>
+            <a href="{% url 'formulario' %}"><button type="button">Crear</button></a>
+        </div>
+{%endblock%}
